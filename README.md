@@ -1,3 +1,5 @@
+# detection_mask_coco_rcnn
+Object detection with segmentation using pre-trained model over MS-COCO dataset
 # MS-COCO object detection and segmentation over eCAL
 Mask RCNN object detection uses frozen model pre-trained on MSCOCO dataset
 
