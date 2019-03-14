@@ -1,0 +1,72 @@
+{
+    "Sequence": [
+        {
+            "DeviceCommonData": {
+                "FolderName": "2019020511521122679",
+                "Name": "measurement_2016-12-26-11-46-56-619.hdf5",
+                "TAN": "20161206120610OZD0578G009720000012016120105354598159"
+            },
+            "DeviceData": [
+                {
+                    "ChannelCommonData": {
+                        "Type": "Image"
+                    },
+                    "ChannelData": [
+                        {
+                            "AnnotatedElements": [
+							{
+								"FrameAnnoElements": [
+									{
+										"Hierarchy": "0",
+										"Trackid": 0,
+										"angle": 0,
+										"attributes": {
+										},
+										"baseimage": "",
+										"category": "",
+										"combinedimage": "",
+										"height": 0,
+										"imagedata": "",
+										"imageheight": 0,
+										"imagename": "",
+										"imagetype": "",
+										"imagewidth": 0,
+										"keypoints": {
+										},
+										"shape": {
+											"Algo Generated": "NO",
+											"Manually Corrected": "NO",
+											"thickness": 0,
+											"type": "Box",
+											"x": [
+												0,
+												0,
+												0,
+												0
+											],
+											"y": [
+												0,
+												0,
+												0,
+												0
+											]
+										},
+										"width": 0
+                                    }
+
+								],
+								"FrameNumber": 0,
+								"TimeStamp": 0
+							}
+                            ],
+                            "ChannelName": "MFC400ShortImageRight"
+                        }
+                    ],
+                    "DeviceName": "Camera",
+                    "InformationElements": {
+                    }
+                }
+            ]
+        }
+    ]
+}

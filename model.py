@@ -2201,7 +2201,6 @@ class MaskRCNN():
         scores: [N] float probability scores for the class IDs
         masks: [H, W, N] instance binary masks
         """
-
         assert self.mode == "inference", "Create model in inference mode."
 
         if verbose: 
@@ -2214,11 +2213,9 @@ class MaskRCNN():
             log("molded_images", molded_images)
             log("image_metas", image_metas)
         # Run object detection
-        print("call detect1...")
         detections, mrcnn_class, mrcnn_bbox, mrcnn_mask, \
         rois, rpn_class, rpn_bbox =\
             self.keras_model.predict([molded_images, image_metas], verbose=0)
-        print("call detect...")
         # Process detections
         results = []
         for i, image in enumerate(images):

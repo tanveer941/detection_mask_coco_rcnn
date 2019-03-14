@@ -1,8 +1,6 @@
 {
-  "image_request":"Response_Image",
-  "image_response":"SR_Response",
-  "algo_end_response":"Finalize",
-  "algo_begin_response":"Response_AlgoReady",
-  "visualization": "True",
-  "full_efficiency": "True"
+  "visualization": "False",
+  "full_efficiency": "True",
+  "gpu_allocation": 0.2,
+  "oversample": 3
 }

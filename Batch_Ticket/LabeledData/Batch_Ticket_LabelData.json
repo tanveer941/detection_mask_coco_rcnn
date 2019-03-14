@@ -1,0 +1,710 @@
+{
+    "Sequence": [
+        {
+            "DeviceData": [
+                {
+                    "ChannelData": [
+                        {
+                            "ChannelName": "right",
+                            "AnnotatedElements": [
+                                {
+                                    "FrameNumber": 3,
+                                    "FrameAnnoElements": [
+                                        {
+                                            "category": "",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 0,
+                                            "combinedimage": "",
+                                            "Trackid": 0,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 0,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    233,
+                                                    366,
+                                                    233,
+                                                    366
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    2,
+                                                    72,
+                                                    72,
+                                                    2
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 133,
+                                            "combinedimage": "",
+                                            "Trackid": 101,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 70,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    236,
+                                                    271,
+                                                    236,
+                                                    271
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    461,
+                                                    551,
+                                                    551,
+                                                    461
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 35,
+                                            "combinedimage": "",
+                                            "Trackid": 102,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "angle": 0,
+                                            "width": 90,
+                                            "imagetype": "",
+                                            "imageheight": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    237,
+                                                    300,
+                                                    237,
+                                                    300
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    343,
+                                                    444,
+                                                    444,
+                                                    343
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 63,
+                                            "combinedimage": "",
+                                            "Trackid": 103,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 101,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    225,
+                                                    336,
+                                                    225,
+                                                    336
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    539,
+                                                    668,
+                                                    668,
+                                                    539
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 111,
+                                            "combinedimage": "",
+                                            "Trackid": 104,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "angle": 0,
+                                            "width": 129,
+                                            "imagetype": "",
+                                            "imageheight": 0
+                                        }
+                                    ],
+                                    "TimeStamp": "176349329"
+                                },
+                                {
+                                    "FrameNumber": 6,
+                                    "FrameAnnoElements": [
+                                        {
+                                            "category": "",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 0,
+                                            "combinedimage": "",
+                                            "Trackid": 0,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 0,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    559,
+                                                    638,
+                                                    559,
+                                                    638
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    89,
+                                                    1144,
+                                                    1144,
+                                                    89
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 79,
+                                            "combinedimage": "",
+                                            "Trackid": 101,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 1055,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    226,
+                                                    338,
+                                                    226,
+                                                    338
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    540,
+                                                    663,
+                                                    663,
+                                                    540
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 112,
+                                            "combinedimage": "",
+                                            "Trackid": 102,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "angle": 0,
+                                            "width": 123,
+                                            "imagetype": "",
+                                            "imageheight": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    250,
+                                                    274,
+                                                    250,
+                                                    274
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    426,
+                                                    481,
+                                                    481,
+                                                    426
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 24,
+                                            "combinedimage": "",
+                                            "Trackid": 103,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 55,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    251,
+                                                    273,
+                                                    251,
+                                                    273
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    653,
+                                                    684,
+                                                    684,
+                                                    653
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 22,
+                                            "combinedimage": "",
+                                            "Trackid": 104,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "angle": 0,
+                                            "width": 31,
+                                            "imagetype": "",
+                                            "imageheight": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    237,
+                                                    311,
+                                                    237,
+                                                    311
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    306,
+                                                    422,
+                                                    422,
+                                                    306
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 74,
+                                            "combinedimage": "",
+                                            "Trackid": 105,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 116,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        }
+                                    ],
+                                    "TimeStamp": "176530165"
+                                },
+                                {
+                                    "FrameNumber": 9,
+                                    "FrameAnnoElements": [
+                                        {
+                                            "category": "",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 0,
+                                            "combinedimage": "",
+                                            "Trackid": 0,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 0,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    561,
+                                                    638,
+                                                    561,
+                                                    638
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    88,
+                                                    1130,
+                                                    1130,
+                                                    88
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 77,
+                                            "combinedimage": "",
+                                            "Trackid": 101,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 1042,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    237,
+                                                    322,
+                                                    237,
+                                                    322
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    258,
+                                                    392,
+                                                    392,
+                                                    258
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 85,
+                                            "combinedimage": "",
+                                            "Trackid": 102,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "angle": 0,
+                                            "width": 134,
+                                            "imagetype": "",
+                                            "imageheight": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    258,
+                                                    273,
+                                                    258,
+                                                    273
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    404,
+                                                    432,
+                                                    432,
+                                                    404
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 15,
+                                            "combinedimage": "",
+                                            "Trackid": 103,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 28,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    253,
+                                                    274,
+                                                    253,
+                                                    274
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    656,
+                                                    690,
+                                                    690,
+                                                    656
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 21,
+                                            "combinedimage": "",
+                                            "Trackid": 104,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "angle": 0,
+                                            "width": 34,
+                                            "imagetype": "",
+                                            "imageheight": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    230,
+                                                    343,
+                                                    230,
+                                                    343
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    538,
+                                                    667,
+                                                    667,
+                                                    538
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 113,
+                                            "combinedimage": "",
+                                            "Trackid": 105,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 129,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    252,
+                                                    275,
+                                                    252,
+                                                    275
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    427,
+                                                    483,
+                                                    483,
+                                                    427
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 23,
+                                            "combinedimage": "",
+                                            "Trackid": 106,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "angle": 0,
+                                            "width": 56,
+                                            "imagetype": "",
+                                            "imageheight": 0
+                                        },
+                                        {
+                                            "category": "car",
+                                            "imagename": "",
+                                            "attributes": {},
+                                            "shape": {
+                                                "y": [
+                                                    244,
+                                                    272,
+                                                    244,
+                                                    272
+                                                ],
+                                                "Manually Corrected": "NO",
+                                                "Algo Generated": "NO",
+                                                "x": [
+                                                    670,
+                                                    702,
+                                                    702,
+                                                    670
+                                                ],
+                                                "type": "Box",
+                                                "thickness": 0
+                                            },
+                                            "imagewidth": 0,
+                                            "baseimage": "",
+                                            "height": 28,
+                                            "combinedimage": "",
+                                            "Trackid": 107,
+                                            "Hierarchy": "0",
+                                            "imagedata": "",
+                                            "keypoints": {},
+                                            "imageheight": 0,
+                                            "width": 32,
+                                            "imagetype": "",
+                                            "angle": 0
+                                        }
+                                    ],
+                                    "TimeStamp": "176711007"
+                                }
+                            ]
+                        }
+                    ],
+                    "InformationElements": {},
+                    "ChannelCommonData": {
+                        "Type": "Image"
+                    },
+                    "DeviceName": "Camera"
+                }
+            ],
+            "DeviceCommonData": {
+                "FolderName": "2019020511521122679",
+                "Name": "measurement_2016-12-26-11-46-56-619.hdf5",
+                "TAN": "20161206120610OZD0578G009720000012016120105354598159"
+            }
+        }
+    ]
+}

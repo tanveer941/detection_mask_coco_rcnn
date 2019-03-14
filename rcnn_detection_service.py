@@ -43,11 +43,15 @@ Time taken for off-the-shelf inference on GPU:
     Full model efficiency - 0.7 seconds for 13 objects detected in image
     Half efficiency - 0.3 seconds for 13 objects detected in image
 Note: If a latest GPU is used Nvidia Titan X dual core 12 GB, the FPS will increase by a good number
+
+D:\Work\2018\code\Tensorflow_code\object_detection\virtual_environments\py35_detection_rcnn\Lib\site-packages
+Have kers 2.1.5
+
 """
 
-import ecal
-import AlgoInterface_pb2
-import imageservice_pb2
+# import ecal
+# import AlgoInterface_pb2
+# import imageservice_pb2
 import sys
 import os
 import numpy as np
@@ -55,9 +59,11 @@ from PIL import Image
 from PIL import ImageDraw
 import json
 import cv2
+import copy
 from datetime import datetime
 import coco
 import model as modellib
+import tensorflow as tf
 
 # if getattr(sys, 'frozen', False):
 #     os.chdir(sys._MEIPASS)
@@ -65,8 +71,35 @@ import model as modellib
 # if getattr(sys, 'frozen', False):
 #     os.chdir(sys.executable)
 
+
+
 FROZEN_MODEL = "mask_rcnn_coco.h5"
 TOPICS_JSON = 'topics.json'
+
+TICKET_PATH = r'C:\Users\uidr8549\Desktop\label_tool_latest\Batch_Ticket'
+
+# Read the label schema
+label_schema_file = os.path.join(TICKET_PATH, 'ToolConfiguration', 'LabelSchema.json')
+ticket_folder_name = os.path.basename(TICKET_PATH)
+labeled_data_json = os.path.join(TICKET_PATH, 'LabeledData', ticket_folder_name+'_LabelData.json')
+# labeled_data_json = os.path.join(TICKET_PATH, 'LabeledData')
+
+with open(r'sample_labeledData.json') as data_file:
+    sample_labeled_data_json = json.load(data_file)
+
+# Create the labeled data json
+with open(labeled_data_json, "w") as f:
+    f.close()
+
+sample_labeled_data_cpy_json = copy.deepcopy(sample_labeled_data_json)
+sample_anno = sample_labeled_data_json['Sequence'][0]['DeviceData'][0]['ChannelData'][0]['AnnotatedElements'][0]
+# Assign frame anno elem list to empty list
+
+sample_labeled_data_cpy_json['Sequence'][0]['DeviceData'][0]['ChannelData'][0]['AnnotatedElements'] = []
+
+# GPU memory allocation
+gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.5)
+sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 
 with open(TOPICS_JSON) as data_file:
     json_data = json.load(data_file)
@@ -77,12 +110,12 @@ response = str(json_data['image_response'])
 vis_flag = True if str(json_data['visualization']) == "True" else False
 full_eff_flag = True if str(json_data['full_efficiency']) == "True" else False
 
-ecal.initialize(sys.argv, "Mask RCNN MS COCO detector")
-ld_req_obj = imageservice_pb2.ImageResponse()
-subscriber_obj = ecal.subscriber(topic_name=request)
-
-lbl_response_obj = AlgoInterface_pb2.LabelResponse()
-publisher_roi_obj = ecal.publisher(topic_name=response)
+# ecal.initialize(sys.argv, "Mask RCNN MS COCO detector")
+# ld_req_obj = imageservice_pb2.ImageResponse()
+# subscriber_obj = ecal.subscriber(topic_name=request)
+#
+# lbl_response_obj = AlgoInterface_pb2.LabelResponse()
+# publisher_roi_obj = ecal.publisher(topic_name=response)
 
 class InferenceConfig(coco.CocoConfig):
     # Set batch size to 1 since we'll be running inference on
@@ -164,6 +197,11 @@ def show_detected_img(img_np, rois, class_ids, masks):
     cv2.destroyAllWindows()
 
 def filter_objs_detected_by_cls_names(roi_dict):
+    """
+    USage : roi_dict = filter_objs_detected_by_cls_names(roi_dict)
+    :param roi_dict:
+    :return:
+    """
     with open('object_class_filter.json') as outfile:
         obj_class_json = json.load(outfile)
 
@@ -174,141 +212,99 @@ def filter_objs_detected_by_cls_names(roi_dict):
             filter_obj_class_dict[class_coordinates_tupl] = class_id_mask_tupl
     return filter_obj_class_dict
 
+def save_lbld_data_json(detected_dict, frame_number, time_stamp):
 
-def publish_rois(roi_dict):
-    """
-
-    :param roi_dict: It is a dictionary with key as coordinate tuple and value is a tuple
-    having class id and its corresponding mask array
-    :return:
-    """
-    if bool(roi_dict):
-        # print("Total ROIs :: ", roi_dict)
+    if detected_dict:
         track_id = 100
-        roi_dict = filter_objs_detected_by_cls_names(roi_dict)
-        lbl_response_obj = AlgoInterface_pb2.LabelResponse()
-        # Unpack the values
-        for class_coordinates_tupl, class_id_mask_tupl in roi_dict.items():
+        sample_frm_anno = sample_anno["FrameAnnoElements"][0]
+
+        sample_anno_cpy = copy.deepcopy(sample_anno)
+        sample_anno_cpy["FrameNumber"] = frame_number
+        sample_anno_cpy["TimeStamp"] = time_stamp
+        print("TimeStamp>>", time_stamp, frame_number)
+        for class_coordinates_tupl, class_id_mask_tupl in detected_dict.items():
             if class_coordinates_tupl:
-                # for class_coordinates_tupl in ordinates:
-                nextattr_obj = lbl_response_obj.NextAttr.add()
-                # print("class_id_mask_tupl :>> ", class_id_mask_tupl[1])
                 class_name = class_names[class_id_mask_tupl[0]]
-                nextattr_obj.type.object_class = class_name
-                print("class_name :: ", class_name)
-                nextattr_obj.trackID = track_id
-                # print("track id :: ", track_id)
-                # Encode numpy arrays to strings
-                mask = class_id_mask_tupl[1]
-                # print("mask_layer >>", type(mask_layer))
-                # Colour the image a little gray else it would just appear plain black
-                pil_mask = Image.fromarray(np.uint8(255.0 * 0.4 * mask)).convert('L')
-                mask_layer = np.array(pil_mask.convert('RGB'))
-
-                # cv2.imwrite('color_img.jpg', mask_layer)
-                # cv2.imshow('Color image', mask_layer)
-                # cv2.waitKey(0)
-                # cv2.destroyAllWindows()
-
-                mask_layer_string = cv2.imencode('.png', mask_layer)[1].tostring()
-                nextattr_obj.mask = mask_layer_string
+                # y1, x1, y2, x2
+                xmin = class_coordinates_tupl[1]
+                ymin = class_coordinates_tupl[0]
+                xmax = class_coordinates_tupl[3]
+                ymax = class_coordinates_tupl[2]
 
                 track_id += 1
-                # x1, x2 , y1, y2 ---->> y1, x1, y2, x2
-                # Create ROI object for Xmin, Ymin
-                # print("class_coordinates_tupl ::", class_coordinates_tupl)
-                roi_min_obj1 = nextattr_obj.ROI.add()
-                roi_min_obj1.X = int(class_coordinates_tupl[1])
-                roi_min_obj1.Y = int(class_coordinates_tupl[0])
 
-                roi_min_obj2 = nextattr_obj.ROI.add()
-                roi_min_obj2.X = int(class_coordinates_tupl[3])
-                roi_min_obj2.Y = int(class_coordinates_tupl[0])
+                # No mask data to be processed, to be in H5 file later
+                sample_frm_anno = copy.deepcopy(sample_frm_anno)
+                sample_frm_anno["category"] = class_name
+                sample_frm_anno["Trackid"] = track_id
+                sample_frm_anno["shape"]["x"] = [xmin, xmax, xmax, xmin]
+                sample_frm_anno["shape"]["y"] = [ymin, ymax, ymin, ymax]
 
-                # Create ROI object for Xmax, Ymax
-                roi_max_obj3 = nextattr_obj.ROI.add()
-                roi_max_obj3.X = int(class_coordinates_tupl[3])
-                roi_max_obj3.Y = int(class_coordinates_tupl[2])
+                sample_frm_anno["height"] = xmax - xmin
+                sample_frm_anno["width"] = ymax - ymin
 
-                roi_max_obj4 = nextattr_obj.ROI.add()
-                roi_max_obj4.X = int(class_coordinates_tupl[1])
-                roi_max_obj4.Y = int(class_coordinates_tupl[2])
-        publisher_roi_obj.send(lbl_response_obj.SerializeToString())
-    else:
-        print("No ROIs detected..")
-        lbl_response_obj = AlgoInterface_pb2.LabelResponse()
-        nextattr_obj = lbl_response_obj.NextAttr.add()
-        nextattr_obj.type.object_class = 'car'
-        nextattr_obj.trackID = 100
-        # Create ROI object for Xmin, Ymin
-        roi_min_obj1 = nextattr_obj.ROI.add()
-        roi_min_obj1.X = -1
-        roi_min_obj1.Y = -1
+                sample_anno_cpy["FrameAnnoElements"].append(sample_frm_anno)
+        # print("sample_anno_cpy::", sample_anno_cpy)
+        sample_labeled_data_cpy_json['Sequence'][0]['DeviceData'][0]['ChannelData'][0]['AnnotatedElements'].append(sample_anno_cpy)
 
-        roi_min_obj2 = nextattr_obj.ROI.add()
-        roi_min_obj2.X = -1
-        roi_min_obj2.Y = -1
-
-        # Create ROI object for Xmax, Ymax
-        roi_max_obj3 = nextattr_obj.ROI.add()
-        roi_max_obj3.X = -1
-        roi_max_obj3.Y = -1
-
-        roi_max_obj4 = nextattr_obj.ROI.add()
-        roi_max_obj4.X = -1
-        roi_max_obj4.Y = -1
-        publisher_roi_obj.send(lbl_response_obj.SerializeToString())
+    with open(labeled_data_json, 'w+') as outfile:
+        json.dump(sample_labeled_data_cpy_json, outfile, indent=4)
 
 #eCAL Subscriber begins here
-while ecal.ok():
-  # Subscribe for the message which is an image encoded through protobuf
-  ret, msg, time = subscriber_obj.receive(500)
-  # print("---:: ", ret, msg, time, type(msg))
-  if msg is not None:
-      ld_req_obj.ParseFromString(msg)
-      print("received image",datetime.now())
-      # print("ld_req_obj :: ", ld_req_obj)
-      img_data_obj = ld_req_obj.base_image
-      print("recieved_timestamp :: ", ld_req_obj.recieved_timestamp)
-      img_data_str = img_data_obj
-      nparr = np.fromstring(img_data_str, np.uint8)
-      # print("nparr :: ", nparr)
-      re_img_np_ary = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-      # print("re_img_np_ary :: ", re_img_np_ary)
-      img_shape = re_img_np_ary.shape
-      print("img_shape ::{ ", img_shape)
+def perform_detection():
 
-      st_time = datetime.now()
-      # print("model :: ", dir(model))
-      results = model.detect([re_img_np_ary], verbose=1)
-      r = results[0]
-      ed_time = datetime.now()
-      duration = ed_time - st_time
-      print("detection done in ... ", duration)
-      # If visualization flag is set to True in topics.json file it would pop an
-      # image with masks, object classes
-      if vis_flag:
-        show_detected_img(re_img_np_ary, r['rois'], r['class_ids'], r['masks'])
+    img_fl_pth_lst = os.listdir(os.path.join(TICKET_PATH, 'Images'))
+    frame_number = 0
+    for img_name in img_fl_pth_lst:
+        frame_number += 1
+        img = cv2.imread(os.path.join(os.path.join(TICKET_PATH, 'Images'), img_name), cv2.IMREAD_COLOR)
+        # print("img_name :: ", img_name)
+        splt_content = img_name.split('_')
+        channel_name = splt_content[0]
+        # Assign the channel name here
+        sample_labeled_data_cpy_json['Sequence'][0]['DeviceData'][0]['ChannelData'][0]["ChannelName"] = channel_name
 
-      # Arrange the detected output in a dictionary
-      # key: tuple having co-ordinates of BBox
-      # value: tuple, 1st value is class id, 2nd value is a mask of numpy array
-      rois_tupl_conv_lst = [tuple(ech_roi) for ech_roi in r['rois'].tolist()]
-      N = r['rois'].shape[0]
-      # print("N :: ", N)
-      mask_obj_lst = []
-      for i in range(N):
+        tm_stamp = os.path.splitext(splt_content[1])[0]
+        img_encoded = cv2.imencode('.png', img)[1].tostring()
+        nparr = np.fromstring(img_encoded, np.uint8)
+        # print("nparr :: ", nparr)
+        re_img_np_ary = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        # re_img_np_ary = np.asarray(img_encoded, dtype=np.int8)
+        # print("re_img_np_ary :: ", re_img_np_ary)
+        img_shape = re_img_np_ary.shape
+        print("img_shape ::{ ", img_shape)
+
+        st_time = datetime.now()
+        # print("model :: ", dir(model))
+        results = model.detect([re_img_np_ary], verbose=1)
+        # print("results::", results)
+        r = results[0]
+        ed_time = datetime.now()
+        duration = ed_time - st_time
+        print("detection done in ... ", duration)
+        # If visualization flag is set to True in topics.json file it would pop an
+        # image with masks, object classes
+        if vis_flag:
+            show_detected_img(re_img_np_ary, r['rois'], r['class_ids'], r['masks'])
+
+        # Arrange the detected output in a dictionary
+        # key: tuple having co-ordinates of BBox
+        # value: tuple, 1st value is class id, 2nd value is a mask of numpy array
+        rois_tupl_conv_lst = [tuple(ech_roi) for ech_roi in r['rois'].tolist()]
+        N = r['rois'].shape[0]
+        # print("N :: ", N)
+        mask_obj_lst = []
+        for i in range(N):
           mask = r['masks'][:, :, i]
           # print("mask >> ", type(mask))
           mask_obj_lst.append(mask)
-      # detected_dict = dict(zip(rois_tupl_conv_lst, r['class_ids'].tolist()))
-      clsid_mask_tupl = zip(r['class_ids'].tolist(), mask_obj_lst)
-      detected_dict = dict(zip(rois_tupl_conv_lst, clsid_mask_tupl))
-      # Publish the class name, bounding box coordinates and the mask numpy array
-      # over prototobuf layer
-      publish_rois(detected_dict)
-      print("published response", datetime.now())
+        # detected_dict = dict(zip(rois_tupl_conv_lst, r['class_ids'].tolist()))
+        clsid_mask_tupl = zip(r['class_ids'].tolist(), mask_obj_lst)
+        detected_dict = dict(zip(rois_tupl_conv_lst, clsid_mask_tupl))
+        # print("detected_dict::", detected_dict)
+        # Publish the class name, bounding box coordinates and the mask numpy array
+        save_lbld_data_json(detected_dict, frame_number, tm_stamp)
 
-ecal.finalize()
-
+if __name__ == '__main__':
+    perform_detection()
 
